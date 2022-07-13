@@ -92,6 +92,9 @@ Overview of escalation paths for module-1
 
 ![10](images/10.png)
 
+
+**Recommended Browser:** Google Chrome
+
 ## Module 2
 
 The second module is under development and would feature an internal HR Payroll application, utilizing the AWS ECS infrastructure. The module will be released after Black Hat USA 2022.
