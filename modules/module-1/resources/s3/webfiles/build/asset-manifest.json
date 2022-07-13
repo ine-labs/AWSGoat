@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.54e3607f.css",
+    "main.js": "/static/js/main.5e35cae6.js",
+    "static/js/787.8c65ad62.chunk.js": "/static/js/787.8c65ad62.chunk.js",
+    "static/media/aws.jpg": "/static/media/aws.7f8d469729dd2de6cfb3.jpg",
+    "static/media/aws-wname.jpg": "/static/media/aws-wname.ca2376115332eb5057e8.jpg",
+    "static/media/login.jpg": "/static/media/login.e21739546d37920dcfe5.jpg",
+    "static/media/AWScloudtitle.jpg": "/static/media/AWScloudtitle.98cddcd1f55ecb7dbf64.jpg",
+    "static/media/reset-password.jpg": "/static/media/reset-password.534bb9d0d1f845e91b10.jpg",
+    "static/media/no-posts-found.jpg": "/static/media/no-posts-found.a48ad7ab109b12f96751.jpg",
+    "static/media/register.jpg": "/static/media/register.4206b16c0ce018f0307d.jpg",
+    "index.html": "/index.html",
+    "main.54e3607f.css.map": "/static/css/main.54e3607f.css.map",
+    "main.5e35cae6.js.map": "/static/js/main.5e35cae6.js.map",
+    "787.8c65ad62.chunk.js.map": "/static/js/787.8c65ad62.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54e3607f.css",
+    "static/js/main.5e35cae6.js"
+  ]
+}

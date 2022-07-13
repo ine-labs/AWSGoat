@@ -1,0 +1,20 @@
+{
+  "short_name": "AWSGoat",
+  "name": "AWSGoat blog application with dashboard",
+  "icons": [
+    {
+      "src": "favicon/awsgoat.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon/awsgoat.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

@@ -1,0 +1,63 @@
+name: 'Terraform Apply'
+
+on: [workflow_dispatch]
+
+permissions: write-all
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment: production
+    env: 
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "us-east-1"
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Initialize a new or existing Terraform working directory 
+    - name: Terraform Init
+      run: | 
+        terraform init 
+        ls -al
+        
+    # Installs boto3
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3
+    - name: install
+      run: |
+        pip install boto3
+    
+    - name: Terraform Plan
+      run: | 
+        terraform plan -input=false
+        ls -al
+      continue-on-error: false
+      
+    - name: Terraform Plan Status
+      if: steps.plan.outcome == 'failure'
+      run: "exit 1"
+    
+    - name: Terraform Apply
+      run: | 
+        terraform apply -auto-approve -input=false
+        ls -al
+      continue-on-error: false
+
+    # Copy tfstate file to s3 bucket
+    - name: Copy terraform.tfstate file to s3bucket
+      run: |
+        aws s3 cp ./terraform.tfstate s3://do-not-delete-awsgoat-state-files-${{secrets.AWS_ACCOUNT_ID}}/terraform.tfstate 
+
+    # Terraform Output the API Gateway url
+    - name: Application URL
+      run: |
+        terraform output

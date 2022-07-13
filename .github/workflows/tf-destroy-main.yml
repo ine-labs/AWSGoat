@@ -1,0 +1,38 @@
+name: 'Terraform Destroy'
+
+on: [workflow_dispatch]
+
+permissions: write-all
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment: production
+    env: 
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "us-east-1"
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    # Copy and delete terraform.tfstate files from s3 bucket
+    - name: Retrieve tfstate
+      run: |
+        aws s3 cp s3://do-not-delete-awsgoat-state-files-${{secrets.AWS_ACCOUNT_ID}}/terraform.tfstate ./terraform.tfstate
+
+    # Initialize a new Terraform working directory
+    - name: Terraform Init
+      run: terraform init
+
+    
+    - name: Terraform Destroy
+      run: terraform destroy -auto-approve -input=false
+      continue-on-error: false
