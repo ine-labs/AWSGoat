@@ -119,7 +119,13 @@ Shantanu Kale, Cloud Developer, INE  <skale@ine.com>
 
 # Solutions
 
+The manuals are available in the [solutions](solutions/) directory 
+
 Module 1 Exploitation Videos: https://youtube.com/playlist?list=PLcIpBb4raSZEMosUmY8KpxPWtjKRMSmNx
+
+# Documentation
+
+For more details refer to the "AWSGoat.pdf" PDF file. This file contains the slide deck used for presentations.
 
 # Screenshots
 
@@ -156,3 +162,12 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
+
+# Sister Projects
+
+- AzureGoat (Coming Soon)
+- GCPSheep (Coming Soon)
+- [PA Toolkit (Pentester Academy Wireshark Toolkit)](https://github.com/pentesteracademy/patoolkit)
+- [ReconPal: Leveraging NLP for Infosec](https://github.com/pentesteracademy/reconpal) 
+- [VoIPShark: Open Source VoIP Analysis Platform](https://github.com/pentesteracademy/voipshark)
+- [BLEMystique](https://github.com/pentesteracademy/blemystique)
