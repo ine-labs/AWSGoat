@@ -165,7 +165,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 # Sister Projects
 
-- AzureGoat (Coming Soon)
+- [AzureGoat](https://github.com/ine-labs/AzureGoat)
 - GCPSheep (Coming Soon)
 - [PA Toolkit (Pentester Academy Wireshark Toolkit)](https://github.com/pentesteracademy/patoolkit)
 - [ReconPal: Leveraging NLP for Infosec](https://github.com/pentesteracademy/reconpal) 
