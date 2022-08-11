@@ -3621,11 +3621,11 @@ resource "null_resource" "file_replacement_lambda_data" {
 resource "null_resource" "file_replacement_api_gw" {
   provisioner "local-exec" {
     command     = <<EOF
-sed -i "s,API_GATEWAY_URL,${aws_api_gateway_deployment.apideploy_ba.invoke_url},g" modules/module-1/resources/s3/webfiles/build/static/js/main.5e35cae6.js
-sed -i "s,API_GATEWAY_URL,${aws_api_gateway_deployment.apideploy_ba.invoke_url},g" modules/module-1/resources/s3/webfiles/build/static/js/main.5e35cae6.js.map
-sed -i 's/"\/static/"https:\/\/${aws_s3_bucket.bucket_upload.bucket}\.s3\.amazonaws\.com\/build\/static/g' modules/module-1/resources/s3/webfiles/build/static/js/main.5e35cae6.js
-sed -i 's/n.p+"static/"https:\/\/${aws_s3_bucket.bucket_upload.bucket}\.s3\.amazonaws\.com\/build\/static/g' modules/module-1/resources/s3/webfiles/build/static/js/main.5e35cae6.js
-sed -i 's/n.p+"static/"https:\/\/s3-bucket-name\.s3\.amazonaws\.com\/build\/static/g' modules/module-1/resources/s3/webfiles/build/static/js/main.5e35cae6.js
+sed -i "s,API_GATEWAY_URL,${aws_api_gateway_deployment.apideploy_ba.invoke_url},g" modules/module-1/resources/s3/webfiles/build/static/js/main.53493dec.js
+sed -i "s,API_GATEWAY_URL,${aws_api_gateway_deployment.apideploy_ba.invoke_url},g" modules/module-1/resources/s3/webfiles/build/static/js/main.53493dec.js.map
+sed -i 's/"\/static/"https:\/\/${aws_s3_bucket.bucket_upload.bucket}\.s3\.amazonaws\.com\/build\/static/g' modules/module-1/resources/s3/webfiles/build/static/js/main.53493dec.js
+sed -i 's/n.p+"static/"https:\/\/${aws_s3_bucket.bucket_upload.bucket}\.s3\.amazonaws\.com\/build\/static/g' modules/module-1/resources/s3/webfiles/build/static/js/main.53493dec.js
+sed -i 's/n.p+"static/"https:\/\/s3-bucket-name\.s3\.amazonaws\.com\/build\/static/g' modules/module-1/resources/s3/webfiles/build/static/js/main.53493dec.js
 EOF
     interpreter = ["/bin/bash", "-c"]
   }

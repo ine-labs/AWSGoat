@@ -8,3 +8,8 @@ export default axios.create({
     "JWT_TOKEN": getToken(),
   }
 });
+
+axios.interceptors.request.use(async req => {
+  req.headers.JWT_TOKEN = getToken();
+  return req;
+})
