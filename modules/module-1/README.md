@@ -25,5 +25,6 @@ npm run build
 sed -i 's,href="/,href="S3_BUCKET/,g' index.html
 sed -i 's,src="/,src="S3_BUCKET/,g' index.html
 ```
+7. Replace S3_BUCKET in index.html file located in ``resources/lambda/react``
 
 7. Run the terraform apply action.
