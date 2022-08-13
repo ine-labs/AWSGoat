@@ -16,6 +16,8 @@ The project will be divided into modules and each module will be a separate web 
 
 ### Developed with :heart: by [INE](https://ine.com/) 
 
+[<img src="https://user-images.githubusercontent.com/25884689/184508144-f0196d79-5843-4ea6-ad39-0c14cd0da54c.png" alt="drawing" width="200"/>](https://discord.gg/4g3VDF5K)
+
 ## Built With
 
 * AWS
