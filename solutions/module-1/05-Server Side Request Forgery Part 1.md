@@ -1,6 +1,6 @@
 # Objectives
 
-In this task, you will try to perform an SSRF attack and try to fetch the */etc/passwd/* file from the Lambda Execution Environment.
+We will try to perform an SSRF attack and try to fetch the */etc/passwd/* file from the Lambda Execution Environment.
 
 # Solution
 
@@ -12,19 +12,21 @@ Open the web application put in the login credentials and interact with the web 
 
 ![](https://user-images.githubusercontent.com/65826354/179528330-7bf9f93e-affd-4525-88ae-57b763ecf076.png)
 
-## Step 2: From side navigation menu select Newpost
+## Step 2: From the side navigation menu select Newpost
 
 ![](https://user-images.githubusercontent.com/65826354/179528339-b0f62e1b-55e8-48a2-b3d7-90ef9ef841dc.png)
 
-Enter any demo headline for the post like, "Sample post check for SSRF". Also, fill in the Author Name.
+Enter any demo headline for the post like, "Sample post check for SSRF". Also, fill in the Author's Name.
 
-In "Enter URL of image" field, write down the below-mentioned payload.
+In the "Enter URL of image" field, write down the below-mentioned payload.
 
 Payload:
 
 ```
 file:///etc/passwd/
 ```
+
+The file scheme is used to access files stored on the local system, the payload if successful will let us view the contents of file  */etc/passwd*. 
 
 ![](https://user-images.githubusercontent.com/65826354/179528349-06a08046-9e17-47b3-b83f-ef707563b5e8.png)
 
@@ -48,7 +50,7 @@ After the successful download of data, you will find that the data is in .png fo
 
 ## Step 5: Open the terminal to display the data.
 
-Open the terminal and run the below mentioned command to display the content of the */etc/passwd/* file.
+Open the terminal and run the below-mentioned command to display the content of the */etc/passwd/* file.
 
 Command:
 
