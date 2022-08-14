@@ -57,11 +57,10 @@ Here are the steps to follow:
 
 ```
 AWS_ACCESS_KEY
-AWS_ACCOUNT_ID
 AWS_SECRET_ACCESS_KEY
 ```
 
-![2](https://user-images.githubusercontent.com/65826354/179526772-16e84787-3ac9-4fd2-b57c-0c794dad5e4f.png)
+![2](https://user-images.githubusercontent.com/65826354/184551000-29f59b56-cbcc-4daf-9dad-a40e35bd6e02.png)
 
 **Step 3.** From the repository actions tab, run the ``Terraform Apply`` Workflow.
 
@@ -69,7 +68,7 @@ AWS_SECRET_ACCESS_KEY
 
 **Step 4.** Find the application URL in the Terraform output section.
 
-![4](https://user-images.githubusercontent.com/65826354/179526780-b01d5c3f-9968-45e9-b698-a9b1905b32b9.png)
+![4](https://user-images.githubusercontent.com/65826354/184553744-c1ba94a1-0d67-4a86-b97d-ee7afe6c65fe.png)
 
 
 ### Manual Installation
