@@ -5,7 +5,7 @@ Perform an SSRF attack to create a new user with administrator privileges by com
 
 ## Step 1: Interact with the Web Application.
 
-Open the web application put the login credentials and start interacting with the web app.
+Open the web application put in the login credentials and start interacting with the web app.
 
 ![](https://user-images.githubusercontent.com/65826354/179528519-b5cd5552-8201-44e9-a59e-ea716d79820e.png)
 
@@ -13,7 +13,7 @@ Open the web application put the login credentials and start interacting with th
 
 ## Step 2: Open and configure Burp Suite.
 
-Open the Burp Suite and make sure the intercept is turned off. Click on the tab named, "Open browser" as shown in the image.
+Open Burp Suite and make sure intercept is turned off. Click on the tab named, "Open browser" as shown in the image.
 
 ![](https://user-images.githubusercontent.com/65826354/179528542-6a6afd61-689e-4e8d-8259-a80c2b466b8a.png)
 
@@ -23,13 +23,11 @@ Once you click on "Open browser" a browser will open up. Then, paste the web app
 
 ![](https://user-images.githubusercontent.com/65826354/179528546-8b69a3e8-43ad-4e7a-8761-aaf22f90476d.png)
 
-Once the application is loaded, you will see this screen.
-
 ![](https://user-images.githubusercontent.com/65826354/179528553-36fbb803-479b-448e-a803-9a4922c72712.png)
 
 ## Step 3: Log in to the web application in the newly opened browser (configured with Burp Suite).
 
-Click on the user image at the top right-hand side corner of the web application, there you will find the option to log in. Simply, click on it and log in with given the credentials.
+Click on the user image at the top right-hand side corner of the web application, there you will find the option to log in. Simply, click on it and log in with the previously created credentials.
 
 Credentials:
 
@@ -40,9 +38,9 @@ Credentials:
 
 ## Step 4: Navigate to Newpost to send a request.
 
-Before moving ahead, open burp suite and turn on the intercept.
+Before moving ahead, open Burp Suite and turn on the intercept.
 
-Fill the headline and enter the below-mentioned payload in the URL field.
+Fill in the headline and enter the below-mentioned payload in the URL field.
 
 Payload:
 
@@ -64,7 +62,7 @@ Payload:
 value=http://localhost:9001/2018-06-01/runtime/invocation/next
 ```
 
-Refer to the following images for better understanding.
+Refer to the following images for a better understanding.
 
 ![](https://user-images.githubusercontent.com/65826354/179528574-31e7109d-9a92-4847-8465-bca431dd1af5.png)
 
@@ -92,7 +90,7 @@ wget <link>
 
 ![](https://user-images.githubusercontent.com/65826354/179528600-aae08a48-7d7e-4547-9969-e8d140df60dd.png)
 
-After successful execution of the above command, a .png file will get downloaded.
+After successful execution of the above command, a .png file will be downloaded.
 
 Run the following command to view the content of the file.
 
@@ -130,7 +128,7 @@ value=file:///proc/self/environ
 
 After changing the payload value, click on the "Send" button to send the request.
 
-You will receive a following response as shown in the image below
+You will receive the following response as shown in the image below
 
 ![](https://user-images.githubusercontent.com/65826354/179528633-bb8af507-e564-43d7-8ccc-58a4e31a4ab9.png)
 
@@ -176,7 +174,7 @@ export AWS_SECRET_ACCESS_KEY = <value>
 
 ![](https://user-images.githubusercontent.com/65826354/179528654-69b4e07c-0203-470e-af43-cd2e1aad4583.png)
 
-Also, run the following command to verify the identity.
+Also, run the following command to verify our identity.
 
 ```bash
 aws sts get-caller-identity
@@ -194,7 +192,7 @@ You will see the following output
 
 ![](https://user-images.githubusercontent.com/65826354/179528661-d347c603-9b24-4ab8-b23e-27a59834f62e.png)
 
-Now copy the role name from the previous output and run the following command to list the attached policies to that specific role.
+Now copy the role name from the previous output and run the following command to list the policies attached to that specific role.
 
 Command:
 
@@ -269,7 +267,7 @@ Command:
 aws dynamodb put-item --table-name blog-users --item file://user_item
 ```
 
-Now, check if the data got added or not. And to do so, run the command given below.
+Now, check if the data was successfully added. To do so, run the command given below.
 
 Command:
 
@@ -279,11 +277,11 @@ aws dynamodb scan --table-name blog-users
 
 ![](https://user-images.githubusercontent.com/65826354/179528719-10c3d0a6-f812-42b2-bc10-ecebac027778.png)
 
-We can see the data successfully was successfully added to the table.
+We can see the data was successfully added to the table.
 
 ## Step 14: Try to login into the web application using the new credentials.
 
-First, go to the web application and log out as an old user. Then you will be redirected to the login page. There put the below-mentioned credentials
+First, go to the web application and log out. Then you will be redirected to the login page. There put in the below-mentioned credentials we had added to the dynamodb table.
 
 - Email: normaluser@ine.com
 - password: attacker@123

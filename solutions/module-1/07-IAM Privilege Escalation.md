@@ -1,21 +1,20 @@
 # Objective
 
-We will try to escalate privileges to become an administrator on the account.
+We will try to escalate privileges to become an administrator on the AWS account.
 
 # Solution
 
-Open the web application put the login credentials and start interacting with the web app.
+Open the web application put in the login credentials and start interacting with the web app.
 
 ![](https://user-images.githubusercontent.com/65826354/179528824-3ebed8f2-2853-4154-8b62-1a2b5a011bb4.png)
 
 ![](https://user-images.githubusercontent.com/65826354/179528876-be33d022-049c-4e27-abe9-34e9ce6f46f3.png)
 
-
 Right-click and find the view page source option, click on that, and visit the image URL.
 
 ![](https://user-images.githubusercontent.com/65826354/179528884-e7a7fc3c-2c42-4342-b6c9-2d6a9d24455c.png)
 
-Now, edit the URL by removing the selected part as shown in the image
+Now, edit the URL by removing the selected part as shown in the image.
 
 ![](https://user-images.githubusercontent.com/65826354/179528899-b955f55a-ba02-49ff-968d-2a9e62b145f0.png)
 
@@ -23,7 +22,7 @@ After hitting enter, you will see the following message Access Denied!
 
 ![](https://user-images.githubusercontent.com/65826354/179528910-837e29a0-2431-41e2-be63-587e9506cf79.png)
 
-Now edit the URL, replacing the word "production" with "dev" in the URL. See the below image for a better understanding
+Now edit the URL, replacing the word "production" with "dev" in the URL. See the image below for a better understanding
 
 ![](https://user-images.githubusercontent.com/65826354/179528921-2f0d4651-cb81-4850-8384-685b5415ceb2.png)
 
@@ -108,11 +107,11 @@ Command:
 aws iam list-attached-role-policies --role-name AWS_GOAT_ROLE
 ```
 
-You will get the following output. Copy the policy arn shown in the image below
+You will get the following output. Copy the policy arn shown in the image below,
 
 ![](https://user-images.githubusercontent.com/65826354/179528992-024c846c-560f-40eb-ac2c-e600f3e46f8a.png)
 
-Now, run the below-mentioned command to get the policy details of the policy, whose arn we copied above
+Now, run the below-mentioned command to get the policy details of the policy, whose arn we had copied.
 
 ```bash
 aws iam get-policy --policy-arn arn:aws:iam::928880666574:policy/dev-ec2-lambda-policies
@@ -205,7 +204,7 @@ code:
 
 Save this file.
 
-And create a new policy with the help of *full_policy.json* file. Run the below-mentioned command to do so.
+And create a new policy using the *full_policy.json* file. Run the below-mentioned command to do so.
 
 Command:
 
@@ -223,7 +222,7 @@ Command:
 aws iam attach-role-policy --role-name blog_app_lambda_data --policy-arn arn:aws:iam::928880666574:policy/escalation_policy
 ```
 
-Open a new terminal and check for AWS account id with the help of below-mentioned command
+Open a new terminal and check for AWS account id with the help of the below-mentioned command
 
 Command:
 
@@ -276,4 +275,4 @@ Let's try to login into the aws account using "hacker" user's credentials. Copy 
 
 ![](https://user-images.githubusercontent.com/65826354/179529102-b959e05b-81f5-4cdb-95a2-c78904776a7e.png)
 
-**Voila! We successfully logged in as a "hacker" user with  administrative access.**
+**Voila! We successfully logged in as a "hacker" user with administrative access.**
