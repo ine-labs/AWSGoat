@@ -1,6 +1,15 @@
 name: 'Terraform Destroy'
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        type: choice
+        description: "Select which module to destroy"
+        options: 
+        - module-1
+        - module-2
+        required: true
 
 permissions: write-all
 
@@ -31,12 +40,17 @@ jobs:
     # Copy and delete terraform.tfstate files from s3 bucket
     - name: Retrieve tfstate
       run: |
+        cd modules/${{ github.event.inputs.module }}
         aws s3 cp s3://do-not-delete-awsgoat-state-files-${{ steps.account.outputs.ACCOUNT_ID }}/terraform.tfstate ./terraform.tfstate
 
     # Initialize a new Terraform working directory
     - name: Terraform Init
-      run: terraform init
+      run: |
+        cd modules/${{ github.event.inputs.module }}
+        terraform init
     
     - name: Terraform Destroy
-      run: terraform destroy -auto-approve -input=false
+      run: |
+        cd modules/${{ github.event.inputs.module }}
+        terraform destroy -auto-approve -input=false
       continue-on-error: false
