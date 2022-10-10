@@ -1,6 +1,16 @@
 name: 'Terraform Apply'
 
-on: [workflow_dispatch]
+
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        type: choice
+        description: "Select which module to deploy"
+        options: 
+        - module-1
+        - module-2
+        required: true
 
 permissions: write-all
 
@@ -43,8 +53,8 @@ jobs:
     # Initialize a new or existing Terraform working directory 
     - name: Terraform Init
       run: | 
+        cd modules/${{ github.event.inputs.module }}
         terraform init 
-        ls -al
         
     # Installs boto3
     - uses: actions/setup-python@v2
@@ -57,8 +67,8 @@ jobs:
     - name: Terraform Plan
       id: plan 
       run: | 
+        cd modules/${{ github.event.inputs.module }}
         terraform plan -input=false
-        ls -al
       continue-on-error: false
       
     - name: Terraform Plan Status
@@ -67,17 +77,19 @@ jobs:
     
     - name: Terraform Apply
       run: | 
+        cd modules/${{ github.event.inputs.module }}
         terraform apply -auto-approve -input=false
-        ls -al
       continue-on-error: false
 
     # Copy tfstate file to s3 bucket
     - name: Copy terraform.tfstate file to s3bucket
       if: always()
       run: |
+        cd modules/${{ github.event.inputs.module }}
         aws s3 cp ./terraform.tfstate s3://do-not-delete-awsgoat-state-files-${{ steps.account.outputs.ACCOUNT_ID }}/terraform.tfstate 
 
     # Terraform Output the API Gateway url
     - name: Application URL
       run: |
+        cd modules/${{ github.event.inputs.module }}
         terraform output

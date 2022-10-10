@@ -13,6 +13,7 @@ The project will be divided into modules and each module will be a separate web 
 - [OWASP Singapore Chapter](https://owasp.org/www-chapter-singapore/)
 - [BlackHat USA 2022](https://www.blackhat.com/us-22/arsenal/schedule/index.html#awsgoat--a-damn-vulnerable-aws-infrastructure-27999)
 - [DC 30: Demo Labs](https://forum.defcon.org/node/242059)
+- [Rootcon 16](https://rootcon.org/)
 
 ### Developed with :heart: by [INE](https://ine.com/) 
 
@@ -24,6 +25,8 @@ The project will be divided into modules and each module will be a separate web 
 * React
 * Python 3
 * Terraform
+* PHP 
+* Docker 
 
 ## Vulnerabilities
 
@@ -37,6 +40,8 @@ Currently, the project  contains the following vulnerabilities/misconfigurations
 * Sensitive Data Exposure and Password Reset
 * S3 Misconfigurations
 * IAM Privilege Escalations
+* ECS Container Breakout
+
 
 # Getting Started
 
@@ -60,20 +65,28 @@ AWS_ACCESS_KEY
 AWS_SECRET_ACCESS_KEY
 ```
 
-![2](https://user-images.githubusercontent.com/65826354/184551000-29f59b56-cbcc-4daf-9dad-a40e35bd6e02.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/184551000-29f59b56-cbcc-4daf-9dad-a40e35bd6e02.png">
+</p>
 
-**Step 3.** From the repository actions tab, run the ``Terraform Apply`` Workflow.
+**Step 3.** From the repository actions tab, select the module to deploy and run the ``Terraform Apply`` Workflow.
 
-![3](https://user-images.githubusercontent.com/65826354/179526776-f03918c2-d944-4480-a098-f9483156b570.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/194799524-a814fba3-2936-47a3-bb11-9d65f65bbf60.png">
+</p>
 
 **Step 4.** Find the application URL in the Terraform output section.
 
-![4](https://user-images.githubusercontent.com/65826354/184553744-c1ba94a1-0d67-4a86-b97d-ee7afe6c65fe.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/184553744-c1ba94a1-0d67-4a86-b97d-ee7afe6c65fe.png">
+</p>
 
 
 ### Manual Installation
 
 Manually installing AWSGoat would require you to follow these steps:
+
+(Note: This requires a Linux Machine, with the /bin/bash shell available)
 
 **Step 1.** Clone the repo
 ```sh
@@ -85,8 +98,9 @@ git clone https://github.com/ine-labs/AWSGoat
 aws configure
 ```
 
-**Step 3.** Use terraform to deploy AWSGoat
+**Step 3.** Traverse into the respective modules' directory and use terraform to deploy AWSGoat
 ```sh
+cd modules/module-<Number>
 terraform init
 terraform apply --auto-approve
 ```
@@ -97,16 +111,33 @@ terraform apply --auto-approve
 
 The first module features a serverless blog application utilizing AWS Lambda, S3, API Gateway, and DynamoDB. It consists of various web application vulnerabilities and facilitates exploitation of misconfigured AWS resources.
 
-Overview of escalation paths for module-1
+Escalation Path:
 
-![10](https://user-images.githubusercontent.com/65826354/179526761-7f473e3d-f71c-429d-bf49-16958c5cb7a6.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/179526761-7f473e3d-f71c-429d-bf49-16958c5cb7a6.png">
+</p>
+
+
+## Module 2
+
+The second module features an internal HR Payroll application, utilizing the AWS ECS infrastructure. It consists of various web application vulnerabilities and facilitates exploitation of misconfigured AWS resources.
+
+Escalation Path:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/194799899-2968e04a-c324-4c3a-bdf2-b33f86fc0e05.png">
+</p>
 
 
 **Recommended Browser:** Google Chrome
 
-## Module 2
+# Pricing
 
-The second module is under development and would feature an internal HR Payroll application, utilizing the AWS ECS infrastructure. The module will be released after Black Hat USA 2022.
+The resources created with the deployment of AWSGoat will not incur any charges if the AWS account is under the free tier/trial period. However, upon exhaustion/ineligibility of the free tier/trial, the following charges will apply: 
+
+Module 1: **$0.0125/hour**
+
+Module 2: **$0.0505/hour**
 
 # Contributors
 
@@ -118,12 +149,20 @@ Sanjeev Mahunta, Software Engineer (Cloud), INE <smahunta@ine.com>
 
 Shantanu Kale, Cloud Developer, INE  <skale@ine.com>
 
+Govind Krishna Lal Balaji, Cloud Developer Intern, INE <lkris@ine.com> 
+
+Litesh Ghute, Software Engineer (Cloud) Intern, INE <lghute@ine.com> 
 
 # Solutions
 
 The manuals are available in the [solutions](solutions/) directory 
 
-Module 1 Exploitation Videos: https://youtube.com/playlist?list=PLcIpBb4raSZEMosUmY8KpxPWtjKRMSmNx
+Module 1 Exploitation Videos: <https://www.youtube.com/playlist?list=PLcIpBb4raSZEMosUmY8KpxPWtjKRMSmNx>
+
+
+[![11](https://user-images.githubusercontent.com/65826354/194854747-26a95cb7-7f8a-4d52-8a36-1ede79a62126.gif)](https://www.youtube.com/playlist?list=PLcIpBb4raSZEMosUmY8KpxPWtjKRMSmNx)
+
+
 
 # Documentation
 
@@ -131,25 +170,35 @@ For more details refer to the "AWSGoat.pdf" PDF file. This file contains the sli
 
 # Screenshots
 
-Blog Application HomePage
+Module 1:
 
-![5](https://user-images.githubusercontent.com/65826354/179526784-2a1d7023-5c6f-4cfb-97b7-74b572b12829.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/179526784-2a1d7023-5c6f-4cfb-97b7-74b572b12829.png">
+</p>
 
-Blog Application Login Portal
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/179526796-fa4fa422-ffb5-4ff4-a2eb-1468e9c81fd6.png">
+</p>
 
-![6](https://user-images.githubusercontent.com/65826354/179526792-2dad1a3b-f871-4128-a82b-9d1ba3b334f5.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/179526801-6eb85d63-b7df-4fac-98f6-8afb834d2f49.png">
+</p>
 
-Blog Application Register Page
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/179526804-78f87773-965d-4eee-a5bf-fb1c1d448234.png">
+</p>
 
-![7](https://user-images.githubusercontent.com/65826354/179526796-fa4fa422-ffb5-4ff4-a2eb-1468e9c81fd6.png)
 
-Blog Application Logged in Dashboard
+Module 2:
 
-![8](https://user-images.githubusercontent.com/65826354/179526801-6eb85d63-b7df-4fac-98f6-8afb834d2f49.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/194800860-e7eaa174-0948-4d35-b185-0325ed7ddcf7.png">
+</p>
 
-Blog Application User Profile
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/65826354/194801060-8ab1ba55-b97c-4cea-817d-0c517a1924b3.png">
+</p>
 
-![9](https://user-images.githubusercontent.com/65826354/179526804-78f87773-965d-4eee-a5bf-fb1c1d448234.png)
 
 ## Contribution Guidelines
 
@@ -168,7 +217,7 @@ You should have received a copy of the GNU General Public License along with thi
 # Sister Projects
 
 - [AzureGoat](https://github.com/ine-labs/AzureGoat)
-- GCPSheep (Coming Soon)
+- GCPGoat (Coming Soon)
 - [PA Toolkit (Pentester Academy Wireshark Toolkit)](https://github.com/pentesteracademy/patoolkit)
 - [ReconPal: Leveraging NLP for Infosec](https://github.com/pentesteracademy/reconpal) 
 - [VoIPShark: Open Source VoIP Analysis Platform](https://github.com/pentesteracademy/voipshark)
