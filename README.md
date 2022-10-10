@@ -87,9 +87,9 @@ Overview of escalation paths for module-2
 
 # Pricing
 
-- **Module-1** the major incurred cost is for the EC2 instance i.e. **0.0125 USD / HR**. Other components like S3 and Lambda will not incur any significant charges.
+- **Module-1** the major incurred cost is for the EC2 instance i.e. **$0.0125/hour**. Other components like S3 and Lambda will not incur any significant charges.
 
-- **Module-2** the major incurred cost is for the EC2 instance deployed by ECS, the RDS instance, and one SecretsManager secret (0.4 USD/Month) i.e. **0.0505 USD / HR**. Other components the Load Balancer will not incur any significant hourly charges.
+- **Module-2** the major incurred cost is for the EC2 instance deployed by ECS, the RDS instance, and one SecretsManager secret (0.4 USD/Month) i.e. **$0.0505/hour**. Other components like the Load Balancer will not incur any significant hourly charges.
 
 # Contributors
 
@@ -111,7 +111,7 @@ The manuals are available in the [solutions](solutions/) directory
 
 Module 1 Exploitation Videos: 
 
-![gif](https://user-images.githubusercontent.com/65826354/194804917-b6f993f2-4bf7-4c6b-b946-b14dd645dc10.gif)
+<img src="https://user-images.githubusercontent.com/65826354/194804917-b6f993f2-4bf7-4c6b-b946-b14dd645dc10.gif" width="1080">
 
 https://youtube.com/playlist?list=PLcIpBb4raSZEMosUmY8KpxPWtjKRMSmNx
 
