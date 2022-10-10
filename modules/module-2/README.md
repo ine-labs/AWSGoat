@@ -18,6 +18,7 @@
 The project is scheduled to encompass all significant vulnerabilities including the OWASP TOP 10 2021, and popular cloud misconfigurations.
 Currently, the project  contains the following vulnerabilities/misconfigurations.
 
+* XSS
 * SQL Injection
 * Insecure Direct Object reference
 * Sensitive Data Exposure and Password Reset
