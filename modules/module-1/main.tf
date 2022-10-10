@@ -15,13 +15,13 @@ data "aws_caller_identity" "current" {}
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_dir  = "modules/module-1/resources/lambda/react"
-  output_path = "modules/module-1/resources/lambda/out/reactapp.zip"
+  source_dir  = "resources/lambda/react"
+  output_path = "resources/lambda/out/reactapp.zip"
   depends_on  = [aws_s3_bucket_object.upload_folder_prod]
 }
 
 resource "aws_lambda_function" "react_lambda_app" {
-  filename      = "modules/module-1/resources/lambda/out/reactapp.zip"
+  filename      = "resources/lambda/out/reactapp.zip"
   function_name = "blog-application"
   handler       = "index.handler"
   runtime       = "nodejs14.x"
@@ -3067,21 +3067,21 @@ resource "aws_api_gateway_deployment" "apideploy_ba" {
 
 data "archive_file" "lambda_zip_bap" {
   type        = "zip"
-  source_file = "modules/module-1/resources/lambda/data/lambda_function.py"
-  output_path = "modules/module-1/resources/lambda/out/data_app.zip"
+  source_file = "resources/lambda/data/lambda_function.py"
+  output_path = "resources/lambda/out/data_app.zip"
   depends_on = [
     null_resource.file_replacement_lambda_data
   ]
 }
 resource "aws_lambda_layer_version" "lambda_layer" {
-  filename                 = "modules/module-1/resources/lambda/layer/brcypt-pyjwt.zip"
-  layer_name               = "brcypt-pyjwt"
+  filename                 = "resources/lambda/layer/bcrypt-pyjwt.zip"
+  layer_name               = "bcrypt-pyjwt"
   compatible_architectures = ["x86_64"]
   compatible_runtimes      = ["python3.9"]
 }
 
 resource "aws_lambda_function" "lambda_ba_data" {
-  filename      = "modules/module-1/resources/lambda/out/data_app.zip"
+  filename      = "resources/lambda/out/data_app.zip"
   function_name = "blog-application-data"
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.9"
@@ -3236,11 +3236,11 @@ resource "aws_s3_bucket_cors_configuration" "bucket_upload" {
 }
 # Upload in production bucket
 resource "aws_s3_bucket_object" "upload_folder_prod" {
-  for_each     = fileset("./modules/module-1/resources/s3/webfiles/", "**")
+  for_each     = fileset("./resources/s3/webfiles/", "**")
   bucket       = aws_s3_bucket.bucket_upload.bucket
   key          = each.value
   acl          = "public-read"
-  source       = "./modules/module-1/resources/s3/webfiles/${each.value}"
+  source       = "./resources/s3/webfiles/${each.value}"
   content_type = lookup(local.content_type_map, regex("\\.(?P<extension>[A-Za-z0-9]+)$", each.value).extension, "application/octet-stream")
   depends_on   = [aws_s3_bucket.bucket_upload, null_resource.file_replacement_api_gw]
 }
@@ -3275,20 +3275,20 @@ data "aws_iam_policy_document" "allow_get_list_access" {
 }
 # Upload in dev bucket
 resource "aws_s3_bucket_object" "upload_folder_dev" {
-  for_each     = fileset("./modules/module-1/resources/s3/webfiles/build/", "**")
+  for_each     = fileset("./resources/s3/webfiles/build/", "**")
   bucket       = aws_s3_bucket.dev.bucket
   key          = each.value
   acl          = "public-read"
-  source       = "./modules/module-1/resources/s3/webfiles/build/${each.value}"
+  source       = "./resources/s3/webfiles/build/${each.value}"
   content_type = lookup(local.content_type_map, regex("\\.(?P<extension>[A-Za-z0-9]+)$", each.value).extension, "application/octet-stream")
   depends_on   = [aws_s3_bucket.dev, null_resource.file_replacement_ec2_ip]
 }
 resource "aws_s3_bucket_object" "upload_folder_dev_2" {
-  for_each     = fileset("./modules/module-1/resources/s3/shared/", "**")
+  for_each     = fileset("./resources/s3/shared/", "**")
   bucket       = aws_s3_bucket.dev.bucket
   key          = each.value
   acl          = "public-read"
-  source       = "./modules/module-1/resources/s3/shared/${each.value}"
+  source       = "./resources/s3/shared/${each.value}"
   content_type = lookup(local.content_type_map, regex("\\.(?P<extension>[A-Za-z0-9]+)$", each.value).extension, "application/octet-stream")
   depends_on   = [aws_s3_bucket.dev, null_resource.file_replacement_ec2_ip]
 }
@@ -3308,20 +3308,20 @@ resource "aws_s3_bucket" "bucket_temp" {
 
 /* Uploading all files to ec2-temp-bucket-ACCOUNT_ID bucket */
 resource "aws_s3_bucket_object" "upload_temp_object" {
-  for_each     = fileset("./modules/module-1/resources/s3/webfiles/build/", "**")
+  for_each     = fileset("./resources/s3/webfiles/build/", "**")
   acl          = "public-read"
   bucket       = aws_s3_bucket.bucket_temp.bucket
   key          = each.value
-  source       = "./modules/module-1/resources/s3/webfiles/build/${each.value}"
+  source       = "./resources/s3/webfiles/build/${each.value}"
   content_type = lookup(local.content_type_map, regex("\\.(?P<extension>[A-Za-z0-9]+)$", each.value).extension, "application/octet-stream")
   depends_on   = [aws_s3_bucket.bucket_upload, null_resource.file_replacement_lambda_react]
 }
 resource "aws_s3_bucket_object" "upload_temp_object_2" {
-  for_each     = fileset("./modules/module-1/resources/s3/shared/", "**")
+  for_each     = fileset("./resources/s3/shared/", "**")
   acl          = "public-read"
   bucket       = aws_s3_bucket.bucket_temp.bucket
   key          = each.value
-  source       = "./modules/module-1/resources/s3/shared/${each.value}"
+  source       = "./resources/s3/shared/${each.value}"
   content_type = lookup(local.content_type_map, regex("\\.(?P<extension>[A-Za-z0-9]+)$", each.value).extension, "application/octet-stream")
   depends_on   = [aws_s3_bucket.bucket_upload, null_resource.file_replacement_lambda_react]
 }
@@ -3486,7 +3486,7 @@ resource "aws_iam_policy" "goat_inline_policy_2" {
 }
 
 data "template_file" "goat_script" {
-  template = file("modules/module-1/resources/ec2/goat_user_data.tpl")
+  template = file("resources/ec2/goat_user_data.tpl")
   vars = {
     S3_BUCKET_NAME = aws_s3_bucket.bucket_temp.bucket
   }
@@ -3552,8 +3552,8 @@ resource "aws_dynamodb_table" "posts_table" {
 resource "null_resource" "populate_table" {
   provisioner "local-exec" {
     command     = <<EOF
-sed -i 's/replace-bucket-name/${aws_s3_bucket.bucket_upload.bucket}/g' modules/module-1/resources/dynamodb/blog-posts.json
-python3 modules/module-1/resources/dynamodb/populate-table.py
+sed -i 's/replace-bucket-name/${aws_s3_bucket.bucket_upload.bucket}/g' resources/dynamodb/blog-posts.json
+python3 resources/dynamodb/populate-table.py
 EOF
     interpreter = ["/bin/bash", "-c"]
   }
@@ -3564,7 +3564,7 @@ EOF
 # To replace with IP Address of EC2-Instance in .ssh/config
 resource "null_resource" "file_replacement_ec2_ip" {
   provisioner "local-exec" {
-    command     = "sed -i 's/EC2_IP_ADDR/${aws_instance.goat_instance.public_ip}/g' modules/module-1/resources/s3/shared/shared/files/.ssh/config.txt"
+    command     = "sed -i 's/EC2_IP_ADDR/${aws_instance.goat_instance.public_ip}/g' resources/s3/shared/shared/files/.ssh/config.txt"
     interpreter = ["/bin/bash", "-c"]
   }
   depends_on = [aws_instance.goat_instance]
@@ -3573,7 +3573,7 @@ resource "null_resource" "file_replacement_ec2_ip" {
 
 resource "null_resource" "file_replacement_lambda_react" {
   provisioner "local-exec" {
-    command     = "sed -i 's/replace-bucket-name/${aws_s3_bucket.bucket_upload.bucket}/g' modules/module-1/resources/lambda/react/index.js"
+    command     = "sed -i 's/replace-bucket-name/${aws_s3_bucket.bucket_upload.bucket}/g' resources/lambda/react/index.js"
     interpreter = ["/bin/bash", "-c"]
   }
   depends_on = [
@@ -3583,7 +3583,7 @@ resource "null_resource" "file_replacement_lambda_react" {
 
 resource "null_resource" "file_replacement_lambda_data" {
   provisioner "local-exec" {
-    command     = "sed -i 's/replace-bucket-name/${aws_s3_bucket.bucket_upload.bucket}/g' modules/module-1/resources/lambda/data/lambda_function.py"
+    command     = "sed -i 's/replace-bucket-name/${aws_s3_bucket.bucket_upload.bucket}/g' resources/lambda/data/lambda_function.py"
     interpreter = ["/bin/bash", "-c"]
   }
   depends_on = [
@@ -3595,10 +3595,10 @@ resource "null_resource" "file_replacement_lambda_data" {
 resource "null_resource" "file_replacement_api_gw" {
   provisioner "local-exec" {
     command     = <<EOF
-sed -i "s,API_GATEWAY_URL,${aws_api_gateway_deployment.apideploy_ba.invoke_url},g" modules/module-1/resources/s3/webfiles/build/static/js/main.e5839717.js
-sed -i "s,API_GATEWAY_URL,${aws_api_gateway_deployment.apideploy_ba.invoke_url},g" modules/module-1/resources/s3/webfiles/build/static/js/main.e5839717.js.map
-sed -i 's/"\/static/"https:\/\/${aws_s3_bucket.bucket_upload.bucket}\.s3\.amazonaws\.com\/build\/static/g' modules/module-1/resources/s3/webfiles/build/static/js/main.e5839717.js
-sed -i 's/n.p+"static/"https:\/\/${aws_s3_bucket.bucket_upload.bucket}\.s3\.amazonaws\.com\/build\/static/g' modules/module-1/resources/s3/webfiles/build/static/js/main.e5839717.js
+sed -i "s,API_GATEWAY_URL,${aws_api_gateway_deployment.apideploy_ba.invoke_url},g" resources/s3/webfiles/build/static/js/main.e5839717.js
+sed -i "s,API_GATEWAY_URL,${aws_api_gateway_deployment.apideploy_ba.invoke_url},g" resources/s3/webfiles/build/static/js/main.e5839717.js.map
+sed -i 's/"\/static/"https:\/\/${aws_s3_bucket.bucket_upload.bucket}\.s3\.amazonaws\.com\/build\/static/g' resources/s3/webfiles/build/static/js/main.e5839717.js
+sed -i 's/n.p+"static/"https:\/\/${aws_s3_bucket.bucket_upload.bucket}\.s3\.amazonaws\.com\/build\/static/g' resources/s3/webfiles/build/static/js/main.e5839717.js
 EOF
     interpreter = ["/bin/bash", "-c"]
   }
@@ -3611,9 +3611,9 @@ EOF
 resource "null_resource" "file_replacement_api_gw_cleanup" {
   provisioner "local-exec" {
     command     = <<EOF
-sed -i "s,${aws_api_gateway_deployment.apideploy_ba.invoke_url},API_GATEWAY_URL,g" modules/module-1/resources/s3/webfiles/build/static/js/main.e5839717.js
-sed -i "s,${aws_api_gateway_deployment.apideploy_ba.invoke_url},API_GATEWAY_URL,g" modules/module-1/resources/s3/webfiles/build/static/js/main.e5839717.js.map
-sed -i 's/${aws_instance.goat_instance.public_ip}/EC2_IP_ADDR/g' modules/module-1/resources/s3/shared/shared/files/.ssh/config.txt
+sed -i "s,${aws_api_gateway_deployment.apideploy_ba.invoke_url},API_GATEWAY_URL,g" resources/s3/webfiles/build/static/js/main.e5839717.js
+sed -i "s,${aws_api_gateway_deployment.apideploy_ba.invoke_url},API_GATEWAY_URL,g" resources/s3/webfiles/build/static/js/main.e5839717.js.map
+sed -i 's/${aws_instance.goat_instance.public_ip}/EC2_IP_ADDR/g' resources/s3/shared/shared/files/.ssh/config.txt
 EOF
     interpreter = ["/bin/bash", "-c"]
   }

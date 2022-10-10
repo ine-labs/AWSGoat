@@ -1,0 +1,29 @@
+[
+    {
+        "portMappings": [
+            {
+                "hostPort": 80,
+                "protocol": "tcp",
+                "containerPort": 80
+            }
+        ],
+        "environment": [
+            {
+              "name": "RDS_ENDPOINT",
+              "value": "RDS_ENDPOINT_VALUE"
+            }
+        ],
+        "linuxParameters": {
+            "capabilities": {
+                "add": [
+                    "SYS_ADMIN"
+                ]
+            },
+            "initProcessEnabled": true
+        },
+        "cpu": 0,
+        "image": "public.ecr.aws/p3q0v3y2/aws-goat-m2:latest",
+        "name": "aws-goat-m2",
+        "privileged": true
+    }
+]
