@@ -2,7 +2,6 @@
 
 ![1](https://user-images.githubusercontent.com/65826354/179526664-cb123612-7f9a-41fe-bab2-eb6b3b2518d7.png)
 
-
 ### Developed with :heart: by [INE](https://ine.com/) 
 
 [<img src="https://user-images.githubusercontent.com/25884689/184508144-f0196d79-5843-4ea6-ad39-0c14cd0da54c.png" alt="drawing" width="200"/>](https://discord.gg/TG7bpETgbg)
@@ -10,8 +9,8 @@
 ## Built With
 
 * AWS
-* React
-* Python 3
+* PHP
+* Docker
 * Terraform
 
 ## Vulnerabilities
@@ -22,11 +21,15 @@ Currently, the project  contains the following vulnerabilities/misconfigurations
 * XSS
 * SQL Injection
 * Insecure Direct Object reference
-* Server Side Request Forgery on Lambda Environment
 * Sensitive Data Exposure and Password Reset
-* S3 Misconfigurations
+* Container Breakout
 * IAM Privilege Escalations
 
+# Getting Started
+
+### Prerequisites
+* An AWS Account
+* AWS Access Key with Administrative Privileges
 
 ### Manual Installation
 
@@ -44,31 +47,34 @@ git clone https://github.com/ine-labs/AWSGoat
 aws configure
 ```
 
-**Step 3.** Traverse into module-1 directory and use terraform to deploy AWSGoat
+**Step 3.** Traverse into module-2 directory and use terraform to deploy AWSGoat
 ```sh
-cd modules/module-1
+cd modules/module-2
 terraform init
 terraform apply --auto-approve
 ```
+# Documentation
+
+For more details refer to the "AWSGoat.pdf" PDF file. This file contains the slide deck used for presentations.
 
 # Screenshots
 
-Blog Application HomePage
+HR Application User HomePage
 
-![5](https://user-images.githubusercontent.com/65826354/179526784-2a1d7023-5c6f-4cfb-97b7-74b572b12829.png)
+![5](https://user-images.githubusercontent.com/65826354/194800860-e7eaa174-0948-4d35-b185-0325ed7ddcf7.png)
 
-Blog Application Login Portal
+HR Application Payslips Page
 
-![6](https://user-images.githubusercontent.com/65826354/179526792-2dad1a3b-f871-4128-a82b-9d1ba3b334f5.png)
+![6](https://user-images.githubusercontent.com/65826354/194800937-7d9674d0-9766-4ce7-ad85-269088f1c3da.png)
 
-Blog Application Register Page
+HR Application Leave Page
 
-![7](https://user-images.githubusercontent.com/65826354/179526796-fa4fa422-ffb5-4ff4-a2eb-1468e9c81fd6.png)
+![7](https://user-images.githubusercontent.com/65826354/194800981-bf75799b-29e1-43d6-992f-53054ac08552.png)
 
-Blog Application Logged in Dashboard
+HR Application Apply Reimbursements Page
 
-![8](https://user-images.githubusercontent.com/65826354/179526801-6eb85d63-b7df-4fac-98f6-8afb834d2f49.png)
+![8](https://user-images.githubusercontent.com/65826354/194801060-8ab1ba55-b97c-4cea-817d-0c517a1924b3.png)
 
-Blog Application User Profile
+HR Application Complaints Page
 
-![9](https://user-images.githubusercontent.com/65826354/179526804-78f87773-965d-4eee-a5bf-fb1c1d448234.png)
+![9](https://user-images.githubusercontent.com/65826354/194801108-ba27d83a-49d4-4509-af84-359d0b613252.png)

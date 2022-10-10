@@ -13,30 +13,12 @@ The project will be divided into modules and each module will be a separate web 
 - [OWASP Singapore Chapter](https://owasp.org/www-chapter-singapore/)
 - [BlackHat USA 2022](https://www.blackhat.com/us-22/arsenal/schedule/index.html#awsgoat--a-damn-vulnerable-aws-infrastructure-27999)
 - [DC 30: Demo Labs](https://forum.defcon.org/node/242059)
+- [Rootcon 16](https://rootcon.org/)
 
 ### Developed with :heart: by [INE](https://ine.com/) 
 
 [<img src="https://user-images.githubusercontent.com/25884689/184508144-f0196d79-5843-4ea6-ad39-0c14cd0da54c.png" alt="drawing" width="200"/>](https://discord.gg/TG7bpETgbg)
 
-## Built With
-
-* AWS
-* React
-* Python 3
-* Terraform
-
-## Vulnerabilities
-
-The project is scheduled to encompass all significant vulnerabilities including the OWASP TOP 10 2021, and popular cloud misconfigurations.
-Currently, the project  contains the following vulnerabilities/misconfigurations.
-
-* XSS
-* SQL Injection
-* Insecure Direct Object reference
-* Server Side Request Forgery on Lambda Environment
-* Sensitive Data Exposure and Password Reset
-* S3 Misconfigurations
-* IAM Privilege Escalations
 
 # Getting Started
 
@@ -62,9 +44,9 @@ AWS_SECRET_ACCESS_KEY
 
 ![2](https://user-images.githubusercontent.com/65826354/184551000-29f59b56-cbcc-4daf-9dad-a40e35bd6e02.png)
 
-**Step 3.** From the repository actions tab, run the ``Terraform Apply`` Workflow.
+**Step 3.** From the repository actions tab, select the module to deploy and run the ``Terraform Apply`` Workflow.
 
-![3](https://user-images.githubusercontent.com/65826354/179526776-f03918c2-d944-4480-a098-f9483156b570.png)
+![3](https://user-images.githubusercontent.com/65826354/194799524-a814fba3-2936-47a3-bb11-9d65f65bbf60.png)
 
 **Step 4.** Find the application URL in the Terraform output section.
 
@@ -73,23 +55,12 @@ AWS_SECRET_ACCESS_KEY
 
 ### Manual Installation
 
-Manually installing AWSGoat would require you to follow these steps:
+The Steps for manually installing AWSGoat are inside their respective directories. 
 
-**Step 1.** Clone the repo
-```sh
-git clone https://github.com/ine-labs/AWSGoat
-```
+For Module-1 : ``modules/module-1/README.md``
 
-**Step 2.** Configure AWS User Account Credentials
-```sh
-aws configure
-```
+For Module-2 : ``modules/module-2/README.md``
 
-**Step 3.** Use terraform to deploy AWSGoat
-```sh
-terraform init
-terraform apply --auto-approve
-```
 
 # Modules
 
@@ -102,11 +73,23 @@ Overview of escalation paths for module-1
 ![10](https://user-images.githubusercontent.com/65826354/179526761-7f473e3d-f71c-429d-bf49-16958c5cb7a6.png)
 
 
-**Recommended Browser:** Google Chrome
 
 ## Module 2
 
-The second module is under development and would feature an internal HR Payroll application, utilizing the AWS ECS infrastructure. The module will be released after Black Hat USA 2022.
+The second module features an internal HR Payroll application, utilizing the AWS ECS infrastructure. It consists of various web application vulnerabilities and facilitates exploitation of misconfigured AWS resources.
+
+Overview of escalation paths for module-2
+
+![11](https://user-images.githubusercontent.com/65826354/194799899-2968e04a-c324-4c3a-bdf2-b33f86fc0e05.png)
+
+
+**Recommended Browser:** Google Chrome
+
+# Pricing
+
+- **Module-1** the major incurred cost is for the EC2 instance i.e. **$0.0125/hour**. Other components like S3 and Lambda will not incur any significant charges.
+
+- **Module-2** the major incurred cost is for the EC2 instance deployed by ECS, the RDS instance, and one SecretsManager secret (0.4 USD/Month) i.e. **$0.0505/hour**. Other components like the Load Balancer will not incur any significant hourly charges.
 
 # Contributors
 
@@ -118,12 +101,19 @@ Sanjeev Mahunta, Software Engineer (Cloud), INE <smahunta@ine.com>
 
 Shantanu Kale, Cloud Developer, INE  <skale@ine.com>
 
+Govind Krishna Lal Balaji, Cloud Developer Intern, INE <lkris@ine.com> 
+
+Litesh Ghute, Software Engineer (Cloud) Intern, INE <lghute@ine.com> 
 
 # Solutions
 
 The manuals are available in the [solutions](solutions/) directory 
 
-Module 1 Exploitation Videos: https://youtube.com/playlist?list=PLcIpBb4raSZEMosUmY8KpxPWtjKRMSmNx
+Module 1 Exploitation Videos: 
+
+<img src="https://user-images.githubusercontent.com/65826354/194804917-b6f993f2-4bf7-4c6b-b946-b14dd645dc10.gif" width="1080">
+
+https://youtube.com/playlist?list=PLcIpBb4raSZEMosUmY8KpxPWtjKRMSmNx
 
 # Documentation
 
@@ -131,25 +121,15 @@ For more details refer to the "AWSGoat.pdf" PDF file. This file contains the sli
 
 # Screenshots
 
-Blog Application HomePage
+Module-1, Blog Application HomePage
 
 ![5](https://user-images.githubusercontent.com/65826354/179526784-2a1d7023-5c6f-4cfb-97b7-74b572b12829.png)
 
-Blog Application Login Portal
 
-![6](https://user-images.githubusercontent.com/65826354/179526792-2dad1a3b-f871-4128-a82b-9d1ba3b334f5.png)
+Module-2, HR Application User HomePage
 
-Blog Application Register Page
+![6](https://user-images.githubusercontent.com/65826354/194800860-e7eaa174-0948-4d35-b185-0325ed7ddcf7.png)
 
-![7](https://user-images.githubusercontent.com/65826354/179526796-fa4fa422-ffb5-4ff4-a2eb-1468e9c81fd6.png)
-
-Blog Application Logged in Dashboard
-
-![8](https://user-images.githubusercontent.com/65826354/179526801-6eb85d63-b7df-4fac-98f6-8afb834d2f49.png)
-
-Blog Application User Profile
-
-![9](https://user-images.githubusercontent.com/65826354/179526804-78f87773-965d-4eee-a5bf-fb1c1d448234.png)
 
 ## Contribution Guidelines
 
