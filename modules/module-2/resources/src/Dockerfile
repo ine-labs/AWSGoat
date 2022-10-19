@@ -1,10 +1,13 @@
 FROM php:8.0-apache
 
+ENV TZ=Asia/Kolkata \
+    DEBIAN_FRONTEND=noninteractive
+
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install mariadb-client-10.5 -y
 RUN apt-get install -y python3 sudo vim libcap2-bin fdisk
-
+RUN apt-get install -y build-essential cmake git libjson-c-dev libwebsockets-dev libcap2-bin net-tools kmod netcat
 COPY ./src /var/www/html
 COPY ./script /usr/local/bin
 

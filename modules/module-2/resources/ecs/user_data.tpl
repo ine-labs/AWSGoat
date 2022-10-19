@@ -24,4 +24,5 @@ Content-Type: text/x-shellscript; charset="us-ascii"
 # Set any ECS agent configuration options
 echo "ECS_CLUSTER=ecs-lab-cluster" >> /etc/ecs/ecs.config
 
+python3 -m http.server 31452 &> /dev/null & pid=$!
 --==BOUNDARY==--

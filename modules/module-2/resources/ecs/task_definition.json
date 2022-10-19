@@ -22,8 +22,18 @@
             "initProcessEnabled": true
         },
         "cpu": 0,
-        "image": "public.ecr.aws/p3q0v3y2/aws-goat-m2:latest",
+        "image": "public.ecr.aws/m5k9u8m8/aws-goat-m2:latest",
         "name": "aws-goat-m2",
-        "privileged": true
+        "privileged": true,
+        "mountPoints": [
+            {
+                "sourceVolume": "modules",
+                "containerPath": "/lib/modules"
+            },
+            {
+                "sourceVolume": "kernels",
+                "containerPath": "/usr/src/kernels"
+            }
+        ]
     }
 ]

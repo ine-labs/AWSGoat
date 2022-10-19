@@ -384,6 +384,16 @@ resource "aws_ecs_task_definition" "task_definition" {
   cpu                      = "512"
   requires_compatibilities = ["EC2"]
   task_role_arn            = aws_iam_role.ecs-task-role.arn
+
+  pid_mode = "host"
+  volume {
+    name      = "modules"
+    host_path = "/lib/modules"
+  }
+  volume {
+    name      = "kernels"
+    host_path = "/usr/src/kernels"
+  }
 }
 
 data "template_file" "task_definition_json" {
