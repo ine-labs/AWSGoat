@@ -19,5 +19,5 @@ RUN echo "www-data ALL=NOPASSWD:/usr/bin/vim /var/www/html/documents" >> /etc/su
 
 RUN chmod 774 -R /var/www/html/documents
 
-CMD ["startup.sh"]
+CMD ["/usr/local/bin/startup.sh"]
 EXPOSE 80
