@@ -16,7 +16,7 @@
         "linuxParameters": {
             "capabilities": {
                 "add": [
-                    "SYS_ADMIN"
+                    "SYS_PTRACE"
                 ]
             },
             "initProcessEnabled": true

@@ -21,6 +21,10 @@ systemctl enable iptables && systemctl start iptables
 Content-Type: text/x-shellscript; charset="us-ascii"
 
 #!/bin/bash
+
+# Update all packages
+sudo yum install kernel-devel-$(uname -r) -y
+
 # Set any ECS agent configuration options
 echo "ECS_CLUSTER=ecs-lab-cluster" >> /etc/ecs/ecs.config
 
