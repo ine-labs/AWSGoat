@@ -24,7 +24,6 @@
         "cpu": 0,
         "image": "public.ecr.aws/m5k9u8m8/aws-goat-m2:latest",
         "name": "aws-goat-m2",
-        "privileged": true,
         "mountPoints": [
             {
                 "sourceVolume": "modules",
