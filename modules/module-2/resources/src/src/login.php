@@ -26,19 +26,20 @@ if (isset($_POST['submit'])) {
 		$_SESSION['id'] = $row['id'];
 		$_SESSION['isadmin']  = $row['isadmin'];
 		$isadmin = $row['isadmin'];
-
+		$_SESSION['organization_id'] = $row['organization_id'];
+		
 		if($result->num_rows > 1){
 			while($row = $result->fetch_assoc()){
 				$_SESSION['username'] = $row['username'];
 				$_SESSION['id'] = $row['id'];
 				$_SESSION['isadmin']  = $row['isadmin'];
 				$isadmin = $row['isadmin'];
+				$_SESSION['organization_id'] = $row['organization_id'];
 			}
 		}
 		if ($isadmin == 0)
 			header("Location: ./user/index.php");
 		else if($isadmin == 1){
-			$_SESSION['organization_id'] = $row['organization_id'];
 			header("Location: ./admin/admin-index.php");
 		}
 		else if($isadmin == 2){
