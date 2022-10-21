@@ -379,11 +379,21 @@ data "template_file" "user_data" {
 resource "aws_ecs_task_definition" "task_definition" {
   container_definitions = data.template_file.task_definition_json.rendered
   family                = "ECS-Lab-Task-definition"
-  #  network_mode             = "bridge"
+  network_mode             = "bridge"
   memory                   = "512"
   cpu                      = "512"
   requires_compatibilities = ["EC2"]
   task_role_arn            = aws_iam_role.ecs-task-role.arn
+
+  pid_mode = "host"
+  volume {
+    name      = "modules"
+    host_path = "/lib/modules"
+  }
+  volume {
+    name      = "kernels"
+    host_path = "/usr/src/kernels"
+  }
 }
 
 data "template_file" "task_definition_json" {

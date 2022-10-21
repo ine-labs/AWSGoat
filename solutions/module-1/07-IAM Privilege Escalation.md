@@ -117,17 +117,17 @@ Now, run the below-mentioned command to get the policy details of the policy, wh
 aws iam get-policy --policy-arn arn:aws:iam::928880666574:policy/dev-ec2-lambda-policies
 ```
 
-![](https://user-images.githubusercontent.com/65826354/179529009-87328ddd-d604-422d-bc93-74474d0b7e05.png)
+![](https://user-images.githubusercontent.com/65826354/197143548-32f53670-8c84-4254-9759-84a0272cec39.png)
 
 Run the below-mentioned command to get the specified version of the policy
 
 Command:
 
 ```bash
-aws iam get-policy-version --policy-arn arn:aws:iam::928880666574:policy/dev-ec2-lambda-policies --version-id v2
+aws iam get-policy-version --policy-arn arn:aws:iam::928880666574:policy/dev-ec2-lambda-policies --version-id v1
 ```
 
-![](https://user-images.githubusercontent.com/65826354/179529016-e1845c5c-ddd8-44d4-9cfe-a97da5d7bc58.png)
+![](https://user-images.githubusercontent.com/65826354/197149071-9e54d83e-a62a-457d-a0a1-75e13ef354b9.png)
 
 We have a few IAM get & list permissions along with fairly permissive lambda permissions too.
 Now, run the below-mentioned command to list the lambda functions in the specified region. 
@@ -160,19 +160,19 @@ Command:
 aws iam get-policy --policy-arn arn:aws:iam::928880666574:policy/lambda-data-policies
 ```
 
-![](https://user-images.githubusercontent.com/65826354/179529032-d4479fd9-5321-45d4-bf24-0e80a1935672.png)
+![](https://user-images.githubusercontent.com/65826354/197149800-ddc61398-d32e-49dd-a49f-b743f19dc220.png)
 
 To get the specific version of the specified policy, run the following command
 
 Command:
 
 ```bash
-aws iam get-policy-version --policy-arn arn:aws:iam::928880666574:policy/lambda-data-policies --version-id v2
+aws iam get-policy-version --policy-arn arn:aws:iam::928880666574:policy/lambda-data-policies --version-id v1
 ```
 
 You will get the following output
 
-![](https://user-images.githubusercontent.com/65826354/179529040-2724076d-925d-4ace-ba48-16d2bea6bdd5.png)
+![](https://user-images.githubusercontent.com/65826354/197150176-1a397ad9-bf52-473e-981f-2198de82be6d.png)
 
 These are restrictive policies, we will try to attach a more generous policy.
 Now, create a new file, *full_policy.json* with the help of nano editor. Run-
@@ -222,7 +222,7 @@ Command:
 aws iam attach-role-policy --role-name blog_app_lambda_data --policy-arn arn:aws:iam::928880666574:policy/escalation_policy
 ```
 
-Open a new terminal and check for AWS account id with the help of the below-mentioned command
+Move to the terminal with the blog-application-data functions' aws credentials and verify the current identity. The Arn should look like the image below (with a different account number).
 
 Command:
 

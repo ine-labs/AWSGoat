@@ -133,7 +133,7 @@ Escalation Path:
 
 # Pricing
 
-The resources created with the deployment of AWSGoat will not incur any charges if the AWS account is under the free tier/trial period. However, upon exhaustion/ineligibility of the free tier/trial, the following charges will apply: 
+The resources created with the deployment of AWSGoat will not incur any charges if the AWS account is under the free tier/trial period. However, upon exhaustion/ineligibility of the free tier/trial, the following charges will apply for the US-East region: 
 
 Module 1: **$0.0125/hour**
 
@@ -208,11 +208,9 @@ Module 2:
 
 # License
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License v2 as published by the Free Software Foundation.
+This program is free software: you can redistribute it and/or modify it under the terms of the MIT License.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
+You should have received a copy of the MIT License along with this program. If not, see https://opensource.org/licenses/MIT.
 
 # Sister Projects
 
