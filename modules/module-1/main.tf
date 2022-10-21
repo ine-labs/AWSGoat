@@ -3452,7 +3452,7 @@ resource "aws_iam_policy" "goat_inline_policy_2" {
           "iam:AttachRolePolicy"
         ],
         "Effect" : "Allow",
-        "Resource" : ["${aws_lambda_function.lambda_ba_data.arn}", "${aws_iam_role.blog_app_lambda.arn}"],
+        "Resource" : ["${aws_lambda_function.lambda_ba_data.arn}", "${aws_iam_role.blog_app_lambda_python.arn}"],
         "Sid" : "Pol0"
       },
       {
