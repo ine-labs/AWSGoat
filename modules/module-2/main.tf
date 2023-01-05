@@ -8,9 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-west-1"
-  shared_credentials_file = "/home/ec2-user/.aws/credentials"
-  profile                 = "jenkins_user"
+  region = "us-east-1"
 }
 
 data "aws_caller_identity" "current" {}
