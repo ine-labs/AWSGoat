@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-1"
 }
 
 data "aws_caller_identity" "current" {}
@@ -138,7 +138,7 @@ resource "aws_db_instance" "database-instance" {
   password               = "T2kVB3zgeN3YbrKS"
   parameter_group_name   = "default.mysql5.7"
   skip_final_snapshot    = true
-  availability_zone      = "us-east-1a"
+  availability_zone      = "us-west-1c"
   db_subnet_group_name   = aws_db_subnet_group.database-subnet-group.name
   vpc_security_group_ids = [aws_security_group.database-security-group.id]
 }
