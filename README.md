@@ -42,7 +42,7 @@ Currently, the project  contains the following vulnerabilities/misconfigurations
 
 * XSS
 * SQL Injection
-* Insecure Direct Object reference
+* Insecure Direct Object Reference
 * Server Side Request Forgery on Lambda Environment
 * Sensitive Data Exposure and Password Reset
 * S3 Misconfigurations
