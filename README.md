@@ -162,7 +162,7 @@ Litesh Ghute, Software Engineer (Cloud) Intern, INE <lghute@ine.com>
 
 # Solutions
 
-The offensive manuals are available in the [attack-manuals](attack-manuals/) directory, and the defensive manuals are available in the [defense-manuals](defense-manuals/) directory. 
+The offensive manuals are available in the [attack-manuals](attack-manuals/) directory, and the defensive manuals are available in the [defence-manuals](defence-manuals/) directory. 
 
 Module 1 Exploitation Videos: <https://www.youtube.com/playlist?list=PLcIpBb4raSZEMosUmY8KpxPWtjKRMSmNx>
 
