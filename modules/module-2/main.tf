@@ -377,8 +377,8 @@ data "template_file" "user_data" {
 }
 
 resource "aws_ecs_task_definition" "task_definition" {
-  container_definitions = data.template_file.task_definition_json.rendered
-  family                = "ECS-Lab-Task-definition"
+  container_definitions    = data.template_file.task_definition_json.rendered
+  family                   = "ECS-Lab-Task-definition"
   network_mode             = "bridge"
   memory                   = "512"
   cpu                      = "512"
