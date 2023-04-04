@@ -64,7 +64,7 @@ Detect changes in configuration using AWS Config
 
     ![](./images/AWS-Config/8.png)
 
-* We can see that now we have 1 Non-Compliant Resource! click on the rule to view the **Non-Compliant Resourse**.
+* We can see that now we have 1 Non-Compliant Resource! click on the rule to view the **Non-Compliant Resource**.
 
 * Voila! it is the policy that we had just created.
 
