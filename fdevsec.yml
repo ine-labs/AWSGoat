@@ -1,0 +1,18 @@
+version: v1
+
+id:
+  org: 2e3b7756-bbaa-4d09-8ee1-8beabd0c6a2c
+  app: 91907c00-4a0a-41c2-95b3-0dac94b1096d
+
+scanners:
+  - sast
+  - secret
+  - sca
+  - iac
+  - container
+
+resource:
+  serial_scan: false
+
+fail_pipeline:
+  risk_rating: 5
