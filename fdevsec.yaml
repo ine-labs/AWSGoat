@@ -15,4 +15,4 @@ resource:
   serial_scan: false
 
 fail_pipeline:
-  risk_rating: 7
+  risk_rating: 4
