@@ -156,9 +156,9 @@ Sanjeev Mahunta, Software Engineer (Cloud), INE <smahunta@ine.com>
 
 Shantanu Kale, Cloud Developer, INE  <skale@ine.com>
 
-Govind Krishna Lal Balaji, Cloud Developer Intern, INE <lkris@ine.com> 
+Govind Krishna Lal Balaji, Cloud Developer, INE <lkris@ine.com> 
 
-Litesh Ghute, Software Engineer (Cloud) Intern, INE <lghute@ine.com> 
+Litesh Ghute, Software Engineer, INE <lghute@ine.com> 
 
 # Solutions
 
