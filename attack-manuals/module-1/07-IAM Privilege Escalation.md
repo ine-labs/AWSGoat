@@ -252,7 +252,7 @@ Run-
 Command:
 
 ```bash
-aws iam attach-user-policy --user-name hacker --policy-arn arn:aws:iam:policy/AdministratorAccess
+aws iam attach-user-policy --user-name hacker --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
 ```
 
 Let's create a login profile for "hacker" user with the help of the following command.
