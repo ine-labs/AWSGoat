@@ -3200,6 +3200,32 @@ resource "aws_s3_bucket" "bucket_upload" {
   }
 }
 
+# ACL fixes required for AWS S3 APR 2023 updates.
+resource "aws_s3_bucket_public_access_block" "bucket_upload" {
+  bucket = aws_s3_bucket.bucket_upload.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_ownership_controls" "bucket_upload" {
+  bucket = aws_s3_bucket.bucket_upload.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_acl" "bucket_upload" {
+  depends_on = [
+	aws_s3_bucket_public_access_block.bucket_upload,
+	aws_s3_bucket_ownership_controls.bucket_upload,
+  ]
+
+  bucket = aws_s3_bucket.bucket_upload.id
+  acl    = "private"
+}
 
 resource "aws_s3_bucket_policy" "allow_access_for_prod" {
   bucket = aws_s3_bucket.bucket_upload.id
@@ -3256,6 +3282,35 @@ resource "aws_s3_bucket" "dev" {
     Environment = "Dev"
   }
 }
+
+
+# ACL fixes required for AWS S3 APR 2023 updates.
+resource "aws_s3_bucket_public_access_block" "dev" {
+  bucket = aws_s3_bucket.dev.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_ownership_controls" "dev" {
+  bucket = aws_s3_bucket.dev.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_acl" "dev" {
+  depends_on = [
+	aws_s3_bucket_public_access_block.dev,
+	aws_s3_bucket_ownership_controls.dev,
+  ]
+
+  bucket = aws_s3_bucket.dev.id
+  acl    = "public-read"
+}
+
 resource "aws_s3_bucket_policy" "allow_access_for_dev" {
   bucket = aws_s3_bucket.dev.bucket
   policy = data.aws_iam_policy_document.allow_get_list_access.json
@@ -3299,11 +3354,38 @@ resource "aws_s3_bucket_object" "upload_folder_dev_2" {
 resource "aws_s3_bucket" "bucket_temp" {
   bucket        = "ec2-temp-bucket-${data.aws_caller_identity.current.account_id}"
   force_destroy = true
-  #   acl = "private"
+
   tags = {
     Name        = "Temporary bucket"
     Environment = "Dev"
   }
+}
+
+# ACL fixes required for AWS S3 APR 2023 updates.
+resource "aws_s3_bucket_public_access_block" "bucket_temp" {
+  bucket = aws_s3_bucket.bucket_temp.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_ownership_controls" "bucket_temp" {
+  bucket = aws_s3_bucket.bucket_temp.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_acl" "bucket_temp" {
+  depends_on = [
+	aws_s3_bucket_public_access_block.bucket_temp,
+	aws_s3_bucket_ownership_controls.bucket_temp,
+  ]
+
+  bucket = aws_s3_bucket.bucket_temp.id
+  acl    = "public-read"
 }
 
 /* Uploading all files to ec2-temp-bucket-ACCOUNT_ID bucket */
