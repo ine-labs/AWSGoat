@@ -21,6 +21,7 @@ The project will be divided into modules and each module will be a separate web 
 - [BlackHat USA 2022](https://www.blackhat.com/us-22/arsenal/schedule/index.html#awsgoat--a-damn-vulnerable-aws-infrastructure-27999)
 - [DC 30: Demo Labs](https://forum.defcon.org/node/242059)
 - [Rootcon 16](https://rootcon.org/)
+- [BlackHat ASIA 2023](https://www.blackhat.com/asia-23/arsenal/schedule/#awsgoat--a-damn-vulnerable-aws-infrastructure-31311)
 
 ### Developed with :heart: by [INE](https://ine.com/) 
 
