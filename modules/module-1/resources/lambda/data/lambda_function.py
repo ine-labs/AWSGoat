@@ -1,12 +1,13 @@
-import json
-import boto3
-import traceback
 import base64
-from datetime import datetime, timedelta
-import urllib
+import json
 import os
-import jwt
+import traceback
+import urllib
+from datetime import datetime, timedelta
+
 import bcrypt
+import boto3
+import jwt
 
 
 def generateResponse(statusCode, body):
