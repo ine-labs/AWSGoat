@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.27"
+      version = "~> 5.24.0"
     }
   }
 }
@@ -24,7 +24,7 @@ resource "aws_lambda_function" "react_lambda_app" {
   filename      = "resources/lambda/out/reactapp.zip"
   function_name = "blog-application"
   handler       = "index.handler"
-  runtime       = "nodejs14.x"
+  runtime       = "nodejs18.x"
   role          = aws_iam_role.blog_app_lambda.arn
   depends_on    = [data.archive_file.lambda_zip, null_resource.file_replacement_lambda_react]
 }
