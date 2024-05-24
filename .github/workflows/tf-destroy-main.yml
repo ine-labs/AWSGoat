@@ -31,6 +31,8 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
+      with:
+        ref: v2 # Specify the version v2 for Node.js 20 compatibility
     
     - name: Set Account ID
       id: account
