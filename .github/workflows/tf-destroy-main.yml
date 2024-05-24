@@ -27,13 +27,20 @@ jobs:
       run:
         shell: bash
 
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 20.x]
+
     steps:
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
-      with:
-        ref: v2 # Specify the version v2 for Node.js 20 compatibility
-    
+
     - name: Set Account ID
       id: account
       run: |
