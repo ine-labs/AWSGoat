@@ -22,7 +22,7 @@ data "archive_file" "lambda_zip" {
 
 resource "aws_lambda_function" "react_lambda_app" {
   filename      = "resources/lambda/out/reactapp.zip"
-  function_name = "blog-application"
+  function_name = "blog-application-test"
   handler       = "index.handler"
   runtime       = "nodejs18.x"
   role          = aws_iam_role.blog_app_lambda.arn
