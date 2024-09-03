@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     env: 
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}  # Correct way to reference secrets
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: "us-east-1"
 
@@ -30,27 +30,4 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
-      uses: actions/checkout@v3
-    
-    - name: Set Account ID
-      id: account
-      run: |
-        echo "::set-output name=ACCOUNT_ID::$(aws sts get-caller-identity --query Account --output text)"
-    
-    # Copy and delete terraform.tfstate files from s3 bucket
-    - name: Retrieve tfstate
-      run: |
-        cd modules/${{ github.event.inputs.module }}
-        aws s3 cp s3://do-not-delete-awsgoat-state-files-${{ steps.account.outputs.ACCOUNT_ID }}/terraform.tfstate ./terraform.tfstate
-
-    # Initialize a new Terraform working directory
-    - name: Terraform Init
-      run: |
-        cd modules/${{ github.event.inputs.module }}
-        terraform init
-    
-    - name: Terraform Destroy
-      run: |
-        cd modules/${{ github.event.inputs.module }}
-        terraform destroy -auto-approve -input=false
-      continue-on-error: false
+      uses: actions/
