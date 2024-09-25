@@ -188,6 +188,14 @@
                 "apigateway:*"
             ],
             "Resource": "arn:aws:apigateway:*::/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": [
+                "arn:aws:iam::*:role/AWS_GOAT_ROLE",
+                "arn:aws:iam::*:role/blog_app_lambda*"
+            ]
         }
     ]
 }
