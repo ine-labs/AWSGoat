@@ -347,14 +347,24 @@ data "aws_ami" "ecs_optimized_ami" {
 }
 
 
-
 resource "aws_launch_configuration" "ecs_launch_config" {
-  image_id             = data.aws_ami.ecs_optimized_ami.id
-  iam_instance_profile = aws_iam_instance_profile.ecs-instance-profile.name
-  security_groups      = [aws_security_group.ecs_sg.id]
-  user_data            = data.template_file.user_data.rendered
-  instance_type        = "t2.micro"
+    image_id             = data.aws_ami.ecs_optimized_ami.id
+    iam_instance_profile = aws_iam_instance_profile.ecs_instance_profile.name
+    security_groups      = [aws_security_group.ecs_sg.id]
+    user_data            = data.template_file.user_data.rendered
+    instance_type        = "t2.micro"
+
+    root_block_device {
+        volume_type = "gp3"
+    }
+
+    metadata_options {
+        http_token               = "required"
+        http_put_response_hop_limit = 1
+        http_endpoint            = "enabled"
+    }
 }
+
 resource "aws_autoscaling_group" "ecs_asg" {
   name                 = "ECS-lab-asg"
   vpc_zone_identifier  = [aws_subnet.lab-subnet-public-1.id]
