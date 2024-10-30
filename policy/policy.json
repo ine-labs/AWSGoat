@@ -96,7 +96,6 @@
                 "iam:CreateInstanceProfile",
                 "iam:CreatePolicy",
                 "iam:CreateRole",
-                "iam:CreateServiceLinkedRole",
                 "iam:DeleteInstanceProfile",
                 "iam:DeletePolicy",
                 "iam:DeleteRole",
@@ -110,7 +109,6 @@
                 "iam:ListInstanceProfilesForRole",
                 "iam:ListPolicyVersions",
                 "iam:ListRolePolicies",
-                "iam:PassRole",
                 "iam:RemoveRoleFromInstanceProfile",
                 "kms:CreateGrant",
                 "kms:Decrypt",
@@ -190,6 +188,32 @@
                 "apigateway:*"
             ],
             "Resource": "arn:aws:apigateway:*::/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": [
+                "arn:aws:iam::*:role/AWS_GOAT_ROLE",
+                "arn:aws:iam::*:role/blog_app_lambda*",
+                "arn:aws:iam::*:role/ec2Deployer-role",
+                "arn:aws:iam::*:role/ecs-instance-role",
+                "arn:aws:iam::*:role/ecs-task-role"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:CreateServiceLinkedRole",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:AWSServiceName": [
+                        "autoscaling.amazonaws.com",
+                        "ecs.amazonaws.com",
+                        "elasticloadbalancing.amazonaws.com",
+                        "rds.amazonaws.com"
+                    ]
+                }
+            }
         }
     ]
 }
