@@ -17,33 +17,35 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: production
+    environment: 
+      NODE_VERSION: '20.x'
+      production
+
     env: 
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: "us-east-1"
 
-    defaults:
-      run:
-        shell: bash
-
     steps:
-    # Checkout the repository to the GitHub Actions runner
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
     - name: Checkout
       uses: actions/checkout@v3
-    
+
     - name: Set Account ID
       id: account
       run: |
-        echo "::set-output name=ACCOUNT_ID::$(aws sts get-caller-identity --query Account --output text)"
+        ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+        echo "ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV
     
-    # Copy and delete terraform.tfstate files from s3 bucket
     - name: Retrieve tfstate
       run: |
         cd modules/${{ github.event.inputs.module }}
-        aws s3 cp s3://do-not-delete-awsgoat-state-files-${{ steps.account.outputs.ACCOUNT_ID }}/terraform.tfstate ./terraform.tfstate
-
-    # Initialize a new Terraform working directory
+        aws s3 cp s3://do-not-delete-awsgoat-state-files-${{ env.ACCOUNT_ID }}/terraform.tfstate ./terraform.tfstate
+    
     - name: Terraform Init
       run: |
         cd modules/${{ github.event.inputs.module }}
