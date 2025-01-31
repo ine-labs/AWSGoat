@@ -30,23 +30,23 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
-    
+      uses: actions/checkout@v4
+
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v2
       with:
-        terraform_version: 1.5.0  # Replace with the required version
-    
+        terraform_version: 1.10.5
+
     - name: Set Account ID
       id: account
       run: |
-        echo "::set-output name=ACCOUNT_ID::$(aws sts get-caller-identity --query Account --output text)"
+        echo "ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)" >> $GITHUB_ENV
 
     - name: Check previous AWSGoat Deployment
       id: check 
       run: |
-        echo $ACCOUNT_ID
-        aws s3api head-object --bucket do-not-delete-awsgoat-state-files-${{ steps.account.outputs.ACCOUNT_ID }} --key terraform.tfstate
+        echo ${{ env.ACCOUNT_ID }}
+        aws s3api head-object --bucket do-not-delete-awsgoat-state-files-${{ env.ACCOUNT_ID }} --key terraform.tfstate
       continue-on-error: true
 
     - name: Exit if previous deployment exists
@@ -62,7 +62,7 @@ jobs:
         terraform init 
         
     # Installs boto3
-    - uses: actions/setup-python@v2
+    - uses: actions/setup-python@v5
       with:
         python-version: 3
     - name: install
@@ -91,7 +91,7 @@ jobs:
       if: always()
       run: |
         cd modules/${{ github.event.inputs.module }}
-        aws s3 cp ./terraform.tfstate s3://do-not-delete-awsgoat-state-files-${{ steps.account.outputs.ACCOUNT_ID }}/terraform.tfstate 
+        aws s3 cp ./terraform.tfstate s3://do-not-delete-awsgoat-state-files-${{ env.ACCOUNT_ID }}/terraform.tfstate 
 
     # Terraform Output the API Gateway url
     - name: Application URL
