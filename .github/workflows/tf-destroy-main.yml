@@ -32,23 +32,21 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-
-
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v2
       with:
-        terraform_version: 1.5.0  # Replace with the required version
+        terraform_version: 1.10.5
     
     - name: Set Account ID
       id: account
       run: |
-        echo "::set-output name=ACCOUNT_ID::$(aws sts get-caller-identity --query Account --output text)"
+        echo "ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)" >> $GITHUB_ENV
 
     # Copy and delete terraform.tfstate files from s3 bucket
     - name: Retrieve tfstate
       run: |
         cd modules/${{ github.event.inputs.module }}
-        aws s3 cp s3://do-not-delete-awsgoat-state-files-${{ steps.account.outputs.ACCOUNT_ID }}/terraform.tfstate ./terraform.tfstate
+        aws s3 cp s3://do-not-delete-awsgoat-state-files-${{ env.ACCOUNT_ID }}/terraform.tfstate ./terraform.tfstate
 
     # Initialize a new Terraform working directory
     - name: Terraform Init
