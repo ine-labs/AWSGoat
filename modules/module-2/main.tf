@@ -133,10 +133,10 @@ resource "aws_db_instance" "database-instance" {
   allocated_storage      = 10
   instance_class         = "db.t3.micro"
   engine                 = "mysql"
-  engine_version         = "5.7"
+  engine_version         = "8.0"
   username               = "root"
   password               = "T2kVB3zgeN3YbrKS"
-  parameter_group_name   = "default.mysql5.7"
+  parameter_group_name   = "default.mysql8.0"
   skip_final_snapshot    = true
   availability_zone      = "us-east-1a"
   db_subnet_group_name   = aws_db_subnet_group.database-subnet-group.name
