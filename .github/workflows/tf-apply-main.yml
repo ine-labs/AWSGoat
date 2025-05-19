@@ -17,7 +17,7 @@ permissions: write-all
 jobs:
   terraform:
     name: 'Terraform'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment: production
     env: 
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
