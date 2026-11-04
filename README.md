@@ -54,8 +54,8 @@ Currently, the project  contains the following vulnerabilities/misconfigurations
 # Getting Started
 
 ### Prerequisites
-* An AWS Account
-* AWS Access Key with Administrative Privileges
+* An AWS Account.
+* AWS Access Key with Administrative Privileges.
 * OR use the IAM policy in the [policy.json](policy/policy.json) file for the minimum permissions required for an AWS Access Key.
 
 
