@@ -160,7 +160,7 @@ Shantanu Kale, Cloud Developer, INE  <skale@ine.com>
 
 Govind Krishna Lal Balaji, Cloud Developer, INE <lkris@ine.com> 
 
-Litesh Ghute, Software Engineer, INE <lghute@ine.com> 
+Litesh Ghute, Senior Engineer, INE <lghute@ine.com>,  [LinkedIn](https://www.linkedin.com/in/liteshghute/)
 
 # Solutions
 

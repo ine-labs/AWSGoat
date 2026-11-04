@@ -642,3 +642,44 @@ footer .wave#wave4 {
   background-color: rgb(36, 187, 242);
   color: white;
 }
+
+@media (max-width: 991.98px) {
+  #sidebarMenu {
+    display: block !important;
+  }
+
+  .navlinks {
+    width: 60px !important;
+    top: 70px;
+    z-index: 10;
+  }
+
+  .navlinks ul {
+    padding-top: 10px;
+  }
+
+  .navlinks ul li a .title {
+    display: none !important;
+  }
+
+  .navlinks ul li a {
+    justify-content: center;
+    border-radius: 0;
+  }
+
+  .navlinks ul li a i {
+    min-width: 60px;
+    line-height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .homewrapper,
+  .payslipswrapper,
+  .leaveapplicationwrapper,
+  .reimbursmentwrapper,
+  .usersettingswrapper,
+  .complaintswrapper {
+    margin-left: 80px;
+    margin-right: 20px;
+  }
+}
