@@ -127,7 +127,6 @@ if (isset($_POST['submit'])) {
     <style>
 
         .card-big-shadow {
-            max-width: 320px;
             position: relative;
         }
 
@@ -147,7 +146,7 @@ if (isset($_POST['submit'])) {
             margin-bottom: 20px;
             position: relative;
             z-index: 1;
-            height: 300px;
+            min-height: 300px;
         }
 
 
@@ -155,7 +154,7 @@ if (isset($_POST['submit'])) {
             color: #FFFFFF;
         }
         .card.card-just-text .content {
-            padding: 50px 65px;
+            padding: 20px 25px;
             text-align: center;
         }
         .card .content {
