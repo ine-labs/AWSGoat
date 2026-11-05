@@ -142,7 +142,7 @@ Escalation Path:
 
 # Pricing
 
-The resources created with the deployment of AWSGoat will not incur any charges if the AWS account is under the free tier/trial period. However, upon exhaustion/ineligibility of the free tier/trial, the following charges will apply for the US-East region: 
+The resources created with the deployment of AWSGoat will not incur any charges if the AWS account is under the free tier/trial period. However, upon exhaustion/ineligibility of the free tier/trial, the following charges will apply for the eu-central region: 
 
 Module 1: **$0.0125/hour**
 

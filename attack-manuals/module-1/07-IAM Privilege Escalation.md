@@ -135,7 +135,7 @@ Now, run the below-mentioned command to list the lambda functions in the specifi
 Command:
 
 ```bash
-aws lambda list-functions --region us-east-1
+aws lambda list-functions --region eu-central-1
 ```
 
 You will get the following output

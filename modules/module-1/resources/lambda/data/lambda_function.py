@@ -41,7 +41,7 @@ def upload_file(img_data, bucket, url=None):
         file = base64.b64decode(img_data)
     try:
         obj.put(Body=file, ACL="public-read")
-        location = "us-east-1"
+        location = "eu-central-1"
         object_url = "https://%s.s3.amazonaws.com/%s" % (bucket, object_name)
         return object_url
     except Exception as e:
@@ -52,6 +52,7 @@ def upload_file(img_data, bucket, url=None):
 def generate_auth(userInfo):
     if userInfo is not None:
         JWT_SECRET = os.environ["JWT_SECRET"]
+        print(JWT_SECRET)
         userInfo = json.loads(userInfo)
         userInfo["exp"] = datetime.now() + timedelta(seconds=36000)
         return jwt.encode(payload=userInfo, key=JWT_SECRET, algorithm="HS256")

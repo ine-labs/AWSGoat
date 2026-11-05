@@ -1,0 +1,8 @@
+.terraform
+*.tfvars
+*.tfvars.json
+*.tfstate
+*.tfstate.*
+.venv
+venv/
+modules/module-1/resources/lambda/out

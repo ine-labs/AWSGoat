@@ -4,7 +4,7 @@ import time
 import os
 
 session=boto3.Session(aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'], aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'])
-dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+dynamodb = boto3.resource('dynamodb', region_name='eu-central-1')
 
 time.sleep(5)
 table_1 = dynamodb.Table('blog-users')
